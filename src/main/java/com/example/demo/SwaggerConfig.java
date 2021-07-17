@@ -13,13 +13,20 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
-    @Bean
-    public Docket docket() {
-        return new Docket(DocumentationType.SWAGGER_2).apiInfo(apiInfo()).select().
-                apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.boot"))).build();
-    }
+  @Bean
+  public Docket docket() {
+    return new Docket(DocumentationType.SWAGGER_2)
+        .apiInfo(apiInfo())
+        .select()
+        .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework.boot")))
+        .build();
+  }
 
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().title("Student Profile API").description("This API is used to study.").version("V1").build();
-    }
+  private ApiInfo apiInfo() {
+    return new ApiInfoBuilder()
+        .title("Student Profile API")
+        .description("This API is used to study.")
+        .version("V1")
+        .build();
+  }
 }

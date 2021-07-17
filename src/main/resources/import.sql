@@ -1,0 +1,2 @@
+insert into student (id, dob, email, name) VALUES (nextval('student_sequence'), '2011-06-06', 'yewon@gmail.com', 'YuYewon');
+insert into student (id, dob, email, name) values (nextval('student_sequence'), '2008-09-22', 'cristine@gmail.com', 'Cristina');
