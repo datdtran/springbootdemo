@@ -1,9 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.domains.CourseRegistration;
 import com.example.demo.services.StudentService;
 import com.example.demo.domains.Student;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,14 +12,10 @@ import java.util.List;
 @ApiOperation(value = "/api/v1/student", tags = "Student Profile Controller")
 @RestController
 @RequestMapping(path = "api/v1/student")
+@AllArgsConstructor
 public class StudentController {
 
   private final StudentService studentService;
-
-  @Autowired
-  public StudentController(StudentService studentService) {
-    this.studentService = studentService;
-  }
 
   @ApiOperation(value = "Get all students", response = Iterable.class)
   @GetMapping
@@ -45,5 +42,10 @@ public class StudentController {
       @RequestParam(required = false) String name,
       @RequestParam(required = false) String email) {
     studentService.updateStudent(studentId, name, email);
+  }
+
+  @GetMapping(path="/course-registered")
+  public List<CourseRegistration> getAllCoursesRegistered(@RequestParam("sid") Long studentId) {
+    return studentService.getAllCourses(studentId);
   }
 }

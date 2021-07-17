@@ -1,8 +1,10 @@
 package com.example.demo.services;
 
+import com.example.demo.domains.Course;
+import com.example.demo.domains.CourseRegistration;
 import com.example.demo.domains.Student;
 import com.example.demo.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,16 +13,11 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class StudentService {
-  @Autowired private final StudentRepository studentRepository;
+  private final StudentRepository studentRepository;
 
-  public StudentService(StudentRepository studentRepository) {
-    this.studentRepository = studentRepository;
-  }
-
-  public List<Student> getStudents() {
-    return studentRepository.findAll();
-  }
+  public List<Student> getStudents() { return studentRepository.findAll(); }
 
   public void addNewStudent(Student student) {
     Optional<Student> studentByEmail = studentRepository.findStudentByEmail(student.getEmail());
@@ -55,5 +52,9 @@ public class StudentService {
       }
       student.setEmail(email);
     }
+  }
+
+  public List<CourseRegistration> getAllCourses(Long student_id) {
+    return studentRepository.findAllCourses(student_id);
   }
 }

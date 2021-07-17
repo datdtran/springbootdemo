@@ -16,7 +16,7 @@ import static java.time.Month.MAY;
 public class StudentConfig {
 
   @Bean
-  CommandLineRunner commandLineRunner(StudentRepository studentRepository) {
+  CommandLineRunner commandLineRunnerStudent(StudentRepository studentRepository) {
     return args -> {
       Student sura = new Student("Sura", LocalDate.of(2000, JANUARY, 5), "sura@gmail.com");
       Student ssosso = new Student("Sohee", LocalDate.of(2008, MAY, 16), "ssosso@gmail.com");
