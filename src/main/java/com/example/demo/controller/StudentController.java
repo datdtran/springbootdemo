@@ -1,5 +1,7 @@
-package com.example.demo.student;
+package com.example.demo.controller;
 
+import com.example.demo.services.StudentService;
+import com.example.demo.domains.Student;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
